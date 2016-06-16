@@ -24,6 +24,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected static class AuthenticationConfiguration extends GlobalAuthenticationConfigurerAdapter {
         @Override
         public void init(AuthenticationManagerBuilder auth) throws Exception {
+            /**
+             * Note: Using an LDIF file isn’t standard configuration for a production system.
+             * However, it’s very useful for testing purposes or guides.
+             */
             auth.ldapAuthentication()
                     .userDnPatterns("uid={0},ou=people")
                     .groupSearchBase("ou=groups")
